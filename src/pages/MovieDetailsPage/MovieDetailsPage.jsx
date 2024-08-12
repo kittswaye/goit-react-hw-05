@@ -21,7 +21,7 @@ export default function MovieDetailsPage() {
       setGenres(genresNames);
     })
     .catch((error) => console.log(error))
-  }, []);
+  }, [movieId]);
 
   return (
     <>
