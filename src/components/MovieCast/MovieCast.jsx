@@ -12,7 +12,7 @@ export default function MovieCast() {
     getCast(movieId)
     .then((data) => setCast(data.data.cast))
     .catch((error) => console.log(error))
-  }, []);
+  }, [movieId]);
 
   return (
       <>

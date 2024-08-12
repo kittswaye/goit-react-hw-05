@@ -12,7 +12,7 @@ export default function MovieReviews() {
     getReviews(movieId)
     .then((data) => setReviews(data.data.results))
     .catch((error) => console.log(error))
-  }, []);
+  }, [movieId]);
 
   return (
       <>

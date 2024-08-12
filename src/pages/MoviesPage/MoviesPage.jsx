@@ -1,5 +1,5 @@
 import css from './MoviesPage.module.css';
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { searchMovie } from '../../tmdb-api.js';
 import { useState, useEffect } from 'react';
 import MovieList from '../../components/MovieList/MovieList.jsx';
@@ -9,6 +9,7 @@ export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     if (query) {
@@ -40,7 +41,7 @@ export default function MoviesPage() {
             />
             <button type="submit" className={css.search}>Search</button>
           </form>
-          <MovieList movies={movies} state={`/movies?query=${query}`} />
+          <MovieList movies={movies} state={location} />
       </div>
   );
 }

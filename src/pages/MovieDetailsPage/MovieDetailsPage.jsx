@@ -1,7 +1,7 @@
 import css from './MovieDetailsPage.module.css';
 import { getMovieDetails } from '../../tmdb-api.js';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function MovieDetailsPage() {
 
@@ -9,7 +9,9 @@ export default function MovieDetailsPage() {
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state ?? '/';
+  const backLinkRef = useRef(
+    location ? location.state : "/"
+  );
 
   useEffect(() => {
     getMovieDetails(movieId)
@@ -25,7 +27,7 @@ export default function MovieDetailsPage() {
     <>
     <div className={css.container}>
       <div className={css.backLink}>
-        <Link to={backLinkHref}>&larr; Go back</Link>
+        <Link to={backLinkRef.current}>&larr; Go back</Link>
       </div>
       <div className={css.details}>
         <div>
@@ -45,10 +47,10 @@ export default function MovieDetailsPage() {
       <p>Additional information</p>
       <ul>
         <li>
-          <Link to='cast' state={backLinkHref}>Cast</Link>
+          <Link to='cast'>Cast</Link>
         </li>
         <li>
-          <Link to='reviews' state={backLinkHref}>Reviews</Link>
+          <Link to='reviews'>Reviews</Link>
         </li>
       </ul>
     </div>
