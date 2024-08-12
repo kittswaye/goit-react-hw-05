@@ -1,0 +1,7 @@
+.actors {
+    list-style-type: none;
+}
+
+.actors li {
+    margin-bottom: 50px;
+}

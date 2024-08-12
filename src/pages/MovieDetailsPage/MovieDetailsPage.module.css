@@ -1,0 +1,17 @@
+.backLink {
+    padding: 10px;
+}
+
+.container {
+    padding: 10px;
+    border-bottom: solid 1px black;
+}
+
+.details {
+    padding-left: 10px 0px 10px 0px;
+    display: flex;
+}
+
+.overview {
+    padding-left: 20px;
+}
